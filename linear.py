@@ -4,7 +4,7 @@
 
 import numpy as np
 from qlearning import *
-
+import matplotlib.pyplot as plt
 # state action  next  reward  terminal 
 #   0     up      1      0      Yes
 #   0     down    2      0      No
@@ -24,7 +24,7 @@ class linear_environment:
 # an instance of the environment
 env = linear_environment()
 
-n_episodes = 1      # number of episodes to run
+n_episodes = 100      # number of episodes to run
 max_steps = 1000     # max. # of steps to run in each episode
 alpha = 0.2          # learning rate
 gamma = 0.9          # discount factor
@@ -32,9 +32,9 @@ gamma = 0.9          # discount factor
 class epsilon_profile: pass
 epsilon = epsilon_profile()
 epsilon.init = 1.    # initial epsilon in e-greedy
-epsilon.final = 1.   # final epsilon in e-greedy
-#epsilon.dec_episode = 1. / n_episodes  # amount of decrement in each episode
-epsilon.dec_episode=0.
+epsilon.final = 0.   # final epsilon in e-greedy
+epsilon.dec_episode = 1. / n_episodes  # amount of decrement in each episode
+#epsilon.dec_episode=0.
 epsilon.dec_step = 0.                  # amount of decrement in each step
 
 Q, n_steps, sum_rewards = Q_learning_train(env, n_episodes, max_steps, alpha, gamma, epsilon)
@@ -42,6 +42,9 @@ print('Q(s,a)')
 print(Q)
 for k in range(n_episodes):
     print('%2d: %.2f' % (k, sum_rewards[k]))
+
+plt.plot(range(n_episodes), n_steps)
+plt.show()
 
 test_n_episodes = 1  # number of episodes to run
 test_max_steps =1000 # max. # of steps to run in each episode
