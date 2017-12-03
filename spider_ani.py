@@ -1,4 +1,4 @@
-# EE488B Special Topics in EE <Deep Learning and AlphaGo>, Fall 2017
+ # EE488B Special Topics in EE <Deep Learning and AlphaGo>, Fall 2017
 # Information Theory & Machine Learning Lab, School of EE, KAIST
 # written by Sae-Young Chung, 11/12/2017
 

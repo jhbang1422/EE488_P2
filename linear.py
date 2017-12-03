@@ -34,12 +34,15 @@ epsilon = epsilon_profile()
 epsilon.init = 1.    # initial epsilon in e-greedy
 epsilon.final = 0.   # final epsilon in e-greedy
 epsilon.dec_episode = 1. / n_episodes  # amount of decrement in each episode
-#epsilon.dec_episode=0.
+# epsilon.dec_episode=0.
 epsilon.dec_step = 0.                  # amount of decrement in each step
 
 Q, n_steps, sum_rewards = Q_learning_train(env, n_episodes, max_steps, alpha, gamma, epsilon)
 print('Q(s,a)')
 print(Q)
+print('average n_step')
+print(n_steps)
+print(sum(n_steps)/n_episodes)
 for k in range(n_episodes):
     print('%2d: %.2f' % (k, sum_rewards[k]))
 
